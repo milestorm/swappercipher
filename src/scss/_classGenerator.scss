@@ -1,0 +1,146 @@
+//** promene pro vygenerovani class (Nelze pouzit jednotku %) **//
+//$widths = w-(hodnota). Obsahuje pouze width. Priklad: .w-40px {width: 40px}, .w-5vw {width: 5vw}
+//$margins-top = mp-(hodnota). Obsahuje pouze margin-top. Priklad: .mt-a {margin-top: auto}, .mt-5vw {margin-top: 5vw}
+//$margins-bottom = mb-(hodnota). Obsahuje pouze margin-bottom. Priklad: .mb-a {margin-bottom: auto}, .mb-5vw {margin-bottom: 5vw}
+//$margins-left = ml-(hodnota). Obsahuje pouze margin-left. Priklad: .ml-a {margin-left: auto}, .ml-5vw {margin-left: 5vw}
+//$margins-right = mr-(hodnota). Obsahuje pouze margin-right. Priklad: .mr-a {margin-right: auto}, .mr-5vw {margin-right: 5vw}
+//$paddings-top = pt-(hodnota). Obsahuje pouze padding-top. Priklad: .pt-a {padding-top: auto}, .pt-5vw {padding-top: 5vw}
+//$paddings-bottom = pb-(hodnota). Obsahuje pouze padding-bottom. Priklad: .pb-a {padding-bottom: auto}, .pb-5vw {padding-bottom: 5vw}
+//$paddings-left = pl-(hodnota). Obsahuje pouze padding-left. Priklad: .pl-a {padding-left: auto}, .pl-5vw {padding-left: 5vw}
+//$paddings-right = pr-(hodnota). Obsahuje pouze padding-right. Priklad: .pr-a {padding-right: auto}, .pr-5vw {padding-right: 5vw}
+$widths: null;
+$margins-top: null;
+$margins-bottom: null;
+$margins-left: null;
+$margins-right: null;
+$paddings-top: null;
+$paddings-bottom: null;
+$paddings-left: null;
+$paddings-right: null;
+
+
+%wrapB {
+    position: relative;
+    max-width: 100%;
+}
+
+@each $width in $widths {
+	@if ($width != null) {
+		.w-#{$width}  {
+			@extend %wrapB;
+			width: #{$width};
+		}
+	}
+}
+
+@each $mt in $margins-top {
+	@if ($mt != null) {
+		@if ($mt == a) {
+			.mt-#{$mt} {
+				margin-top: auto;
+			}
+		} @else {
+			.mt-#{$mt} {
+				margin-top: #{$mt};
+			}
+		}
+	}
+}
+
+@each $mb in $margins-bottom {
+	@if ($mb != null) {
+		@if ($mb == a) {
+			.mb-#{$mb} {
+				margin-bottom: auto;
+			}
+		} @else {
+			.mb-#{$mb} {
+				margin-bottom: #{$mb};
+			}
+		}
+	}
+}
+
+@each $ml in $margins-left {
+	@if ($ml != null) {
+		@if ($ml == a) {
+			.ml-#{$ml} {
+				margin-left: auto;
+			}
+		} @else {
+			.ml-#{$ml} {
+				margin-left: #{$ml};
+			}
+		}
+	}
+}
+
+@each $mr in $margins-right {
+	@if ($mr != null) {
+		@if ($mr == a) {
+			.mr-#{$mr} {
+				margin-right: auto;
+			}
+		} @else {
+			.mr-#{$mr} {
+				margin-right: #{$mr};
+			}
+		}
+	}
+}
+
+@each $pt in $paddings-top {
+	@if ($pt != null) {
+		@if ($pt == a) {
+			.pt-#{$pt} {
+				padding-top: auto;
+			}
+		} @else {
+			.pt-#{$pt} {
+				padding-top: #{$pt};
+			}
+		}
+	}
+}
+
+@each $pb in $paddings-bottom {
+	@if ($pb != null) {
+		@if ($pb == a) {
+			.pb-#{$pb} {
+				padding-bottom: auto;
+			}
+		} @else {
+			.pb-#{$pb} {
+				padding-bottom: #{$pb};
+			}
+		}
+	}
+}
+
+@each $pl in $paddings-left {
+	@if ($pl != null) {
+		@if ($pl == a) {
+			.pl-#{$pl} {
+				padding-left: auto;
+			}
+		} @else {
+			.pl-#{$pl} {
+				padding-left: #{$pl};
+			}
+		}
+	}
+}
+
+@each $pr in $paddings-right {
+	@if ($pr != null) {
+		@if ($pr == a) {
+			.pr-#{$pr} {
+				padding-right: auto;
+			}
+		} @else {
+			.pr-#{$pr} {
+				padding-right: #{$pr};
+			}
+		}
+	}
+}

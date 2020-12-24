@@ -1,0 +1,123 @@
+// body, html {
+// 	overflow-x:hidden;
+// }
+
+body {
+	margin: 0;
+	background-color: $bg;
+	color: $txt;
+}
+
+$container-width: 960px;
+$wrap-width: 500px;
+
+.container {
+	width: $container-width;
+	position: relative;
+	margin: 0 auto;
+	max-width: 95%;
+}
+
+.wrap {
+	width: $wrap-width;
+	position: relative;
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+section {
+	background-repeat: no-repeat;
+	background-position: center top;
+	position: relative;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+body {
+	text-align: center;
+}
+
+h1 {
+	color: $heading;
+	font-size: 50px;
+	margin-top: 50px;
+	margin-bottom: 15px;
+}
+
+.perex {
+	font-size: 20px;
+	color: $heading;
+}
+
+#intro {
+	padding-bottom: 50px;
+}
+
+.hidden {
+	display: none;
+}
+
+h2 {
+	margin-bottom: 10px;
+	font-size: 20px;
+}
+
+.inputCode {
+	width: calc(100% - 60px);
+	height: 150px;
+	background-color: $box;
+	color: $input;
+	border: none;
+    overflow: auto;
+    outline: none;
+	resize: none;
+	margin-bottom: 20px;
+	text-align: center;
+	padding: 30px;
+}
+
+.outputCode {
+	background-color: $box;
+	color: $code;
+	padding: 30px;
+	display: inline-block;
+}
+
+.errormessage {
+	padding-bottom: 30px;
+	color: $error;
+}
+
+.buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.button {
+	padding: 10px 40px;
+	transition: .2s ease-in-out;
+	cursor: pointer;
+
+	&.encode {
+		background-color: $butt_r_bg;
+		color: $butt_r_txt;
+	}
+
+	&.decode {
+		background-color: $butt_g_bg;
+		color: $butt_g_txt;
+	}
+
+	&:hover {
+		filter: brightness(1.25);
+		transform: scale(1.05);
+	}
+}
+
+.outputText {
+	margin-top: 50px;
+}

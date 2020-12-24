@@ -1,0 +1,17 @@
+head
+	meta(charset='utf-8')
+	meta(http-equiv='X-UA-Compatible' content='IE=edge')
+	meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
+	title= fullTitle
+	if (config.googleFonts)
+		link(href!=`${config.googleFonts}` rel='stylesheet')
+	each lib in libraries
+		- let libURL = `https://cdn.jsdelivr.net/npm/${lib.package}@${lib.version}`
+		if lib.enabled
+			each file in lib.files
+				- let fileURL = `${libURL}/${file}`
+				if file.endsWith("js")
+					script(type='text/javascript' src=fileURL)
+				else if file.endsWith("css")
+					link(rel='stylesheet' type='text/css' href=fileURL)
+	link(rel='stylesheet' type='text/css' href=`main.css?v${timestamp}`)

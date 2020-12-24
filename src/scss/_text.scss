@@ -1,0 +1,36 @@
+@function PSpacing($unit, $base: 16) {
+	@return #{($unit * $base) / 1000}px;
+}
+@mixin f($fontSize,$lineHeight:false,$spacing:false) {
+	font-size: #{$fontSize}px;
+	@if ($lineHeight) {
+		line-height: #{$lineHeight/$fontSize};
+	}
+	@if ($spacing) {
+		letter-spacing: PSpacing($spacing,$fontSize);
+	}
+}
+
+@mixin Roboto400 {font-family: "Roboto", sans-serif;font-style: normal;font-weight: 400;}
+@mixin Roboto700 {font-family: "Roboto", sans-serif;font-style: normal;font-weight: 700;}
+@mixin RobotoMono400 {font-family: "Roboto Mono", monospace;font-style: normal;font-weight: 700;}
+
+body,
+p {
+	@include Roboto400;
+}
+
+h1,
+.button {
+	@include Roboto700;
+}
+
+.outputCode,
+.inputCode {
+	@include RobotoMono400;
+}
+
+.outputCode,
+.inputCode {
+	font-size: 18px;
+}

@@ -1,0 +1,83 @@
+-
+	const config = {
+		path: 'the-swapper-cipher',
+		title: 'The Swapper cipher',
+		description: 'the swapper cipher',
+		published: false,
+		publishDate: 'YYYY-MM-DD',
+		partnerName: '',
+		partnerWebsite: '',
+		partnerWebsiteShort: '',
+		textAuthor: '',
+		designAuthor: '',
+		codeAuthor: '',
+		logoVariant: 'dark',
+		service: '',
+		serviceURL: '',
+		googleFonts: 'https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@400;700&display=swap&subset=latin-ext'
+	}
+
+	const libraries = {
+		jQuery: {
+			package: "jquery",
+			files: [
+				"dist/jquery.min.js"
+			],
+			version: "3.5.1",
+			enabled: false
+		},
+		jQLazy: {
+			package: "jquery-lazy",
+			files: [
+				"jquery.lazy.min.js"
+			],
+			version: "1.7.11",
+			enabled: false
+		},
+		slick: {
+			package: "slick-carousel",
+			files: [
+				"slick/slick.css",
+				"slick/slick.min.js"
+			],
+			version: "1.8.1",
+			enabled: false
+		},
+		lottie: {
+			package: "lottie-web",
+			files: [
+				"build/player/lottie_svg.min.js"
+			],
+			version: "5.7.5",
+			enabled: false
+		},
+		rellax: {
+			package: "rellax",
+			files: [
+				"rellax.min.js"
+			],
+			version: "1.12.1",
+			enabled: false
+		},
+		stickyKit: {
+			package: "sticky-kit",
+			files: [
+				"dist/sticky-kit.min.js"
+			],
+			version: "1.1.3",
+			enabled: false
+		},
+		scrollMe: {
+			package: "@genkaok/scrollme",
+			files: [
+				"jquery.scrollme.min.js"
+			],
+			version: "1.1.0",
+			enabled: false
+		}
+	}
+
+	const nativeURL  = `https://native.${config.serviceURL}`,
+		  fullTitle  = `${config.title}`,
+		  articleURL = `${nativeURL}/${config.path}`,
+		  timestamp  = Date.now();

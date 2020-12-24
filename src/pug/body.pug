@@ -1,0 +1,28 @@
+include top-bar
+section#intro
+	.container
+		.wrap
+			h1 The Swapper cipher
+			p.perex Encoder / Decoder
+
+section#section
+	.container
+		.wrap
+			.inputText
+				h2.inputHeading Input
+				textarea.inputCode
+				p.errormessage.hidden
+				.buttons
+					.button.encode
+						span Encode
+					.button.decode
+						span Decode
+
+		.outputText.hidden
+			h2.outputHeading Output
+			.output
+				p.outputCode
+
+
+include footer
+include scripts

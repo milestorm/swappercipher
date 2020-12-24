@@ -1,0 +1,11 @@
+$bp: 1920px;
+@function vw($px-vw, $vwBase: $bp) {
+	@return ($px-vw * 100vw) / $vwBase;
+}
+
+$bp: 440px;
+@media (max-width: $bp) {
+	h1 {
+		font-size: 32px;
+	}
+}

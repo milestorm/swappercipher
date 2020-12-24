@@ -1,0 +1,23 @@
+footer {
+	text-align: center;
+	padding: 45px 0;
+	p {
+		font-size: 14px;
+	}
+	.copyright {
+		font-size: 16px;
+		opacity: .3;
+	}
+	.d {
+		display: inline;
+		margin: 0 10px 0 9px;
+		&:before {
+			content: '|';
+		}
+	}
+}
+
+.privacy,
+.privacy:visited {
+	color: black;
+}
