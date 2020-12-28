@@ -10,9 +10,11 @@ function createArray(length) {
 	return arr;
 }
 
-const secretKey = [ [1,0], [0,-1], [-1,0], [0,1] ]; // X,Y =   -> , ^ , <- , v
+const defaultKey = [ [1,0], [0,-1], [-1,0], [0,1] ];  // X,Y =   -> , ^ , <- , v
+let secretKey = defaultKey;
+let useCustomKey = false;
+let customKey;
 
-let buffer, change, keyX, keyY;
 
 function keyPosInc(keyPosition) {
 	keyPosition++;
@@ -32,6 +34,7 @@ function keyPosDec(keyPosition) {
 
 function shuffleEncode(array) {
 	let keyPosition = 0;
+	let buffer, change, keyX, keyY;
 
 	for (let y = 0; y < array.length; y++) {
 		for (let x = 0; x < array[0].length; x++) {
@@ -62,6 +65,7 @@ function shuffleDecode(array) {
 	//const decodedKeyPosition = keyPosition;
 	//keyPosition = decodedKeyPosition - 1;
 	let keyPosition = secretKey.length - 1; // when MOD is 0
+	let buffer, change, keyX, keyY;
 
 	for (let y = array.length - 1; y >= 0; y--) {
 		for (let x = array[0].length - 1; x >= 0; x--) {
@@ -168,16 +172,59 @@ function inputTextToArray(inputText) {
 }
 
 
-function errorCheck(inputElm, errElm) {
+function errorCheck(inputElm, customKeyElm, errElm) {
 	const val = inputElm.value;
+	const keyVal = customKeyElm.value;
+	let inputBool = true;
+	let keyBool = true;
+
+	errElm.innerText = "";
+
 	if (val.length < 5) {
-		errElm.innerText = "Input must contain at least 5 characters.";
+		errElm.innerText += "Input must contain at least 5 characters.\n";
 		errElm.classList.remove("hidden");
-		return false;
-	} else {
-		errElm.classList.add("hidden");
-		return true;
+		inputBool = false;
 	}
+
+	if (useCustomKey == true) {
+		if (keyVal.length < 4) {
+			errElm.innerText += "Custom key must contain at least 4 characters.\n";
+			errElm.classList.remove("hidden");
+			keyBool = false;
+		}
+	}
+
+	if ((inputBool && keyBool) == true) {
+		errElm.classList.add("hidden");
+	}
+
+	return inputBool && keyBool;
+}
+
+function makeCustomKey(inputElm) {
+	let value = inputElm.value.toUpperCase().replaceAll(/[^UDLR]/g,"");
+	inputElm.value = value;
+	value = value.split("");
+	let retArray = value.map(character => {
+		switch (character) {
+			case "R":
+				return [1, 0];
+				break;
+			case "U":
+				return [0, -1];
+				break;
+			case "L":
+				return [-1, 0];
+				break;
+			case "D":
+				return [0, 1];
+				break;
+			default:
+				break;
+		}
+	});
+
+	return retArray;
 }
 
 
@@ -187,12 +234,22 @@ const outputEnablerElm = document.querySelector(".outputText");
 const outputHeading = document.querySelector(".outputHeading");
 const outputElm = document.querySelector(".outputCode");
 
+const customKeyElm = document.querySelector("input.key");
+
 
 
 document.querySelector(".button.encode").addEventListener("click", () => {
-	if (!errorCheck(inputElm, errElm)) {
+	if (!errorCheck(inputElm, customKeyElm, errElm)) {
 		return;
 	}
+
+	if (useCustomKey) {
+		secretKey = makeCustomKey(customKeyElm);
+	} else {
+		secretKey = defaultKey;
+	}
+
+	console.log ("using key", secretKey)
 
 	const textToEncode = inputTextToArray(inputElm.value);
 	const encodedText = shuffleEncode(textToEncode);
@@ -202,13 +259,30 @@ document.querySelector(".button.encode").addEventListener("click", () => {
 });
 
 document.querySelector(".button.decode").addEventListener("click", () => {
-	if (!errorCheck(inputElm, errElm)) {
+	if (!errorCheck(inputElm, customKeyElm, errElm)) {
 		return;
 	}
+
+	if (useCustomKey) {
+		secretKey = makeCustomKey(customKeyElm);
+	} else {
+		secretKey = defaultKey;
+	}
+
+	console.log ("using key", secretKey)
 
 	const textToDecode = encodedTextToArray(inputElm.value);
 	const decodedText = shuffleDecode(textToDecode);
 	outputElm.innerText = prettyPrintArray(decodedText);
 	outputHeading.innerText = "Decoded output";
 	outputEnablerElm.classList.remove("hidden");
+});
+
+$(".customKey").click(function(){
+	$(".customKeyWrap .inputWrap").slideToggle();
+	!useCustomKey ? useCustomKey = true : useCustomKey = false;
+});
+
+$(document).ready(function(){
+	$(".customKeyWrap .inputWrap").hide();
 });

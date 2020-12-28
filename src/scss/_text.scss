@@ -26,11 +26,13 @@ h1,
 }
 
 .outputCode,
-.inputCode {
+.inputCode,
+.key {
 	@include RobotoMono400;
 }
 
 .outputCode,
-.inputCode {
+.inputCode,
+.key {
 	font-size: 18px;
 }
