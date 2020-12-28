@@ -249,8 +249,6 @@ document.querySelector(".button.encode").addEventListener("click", () => {
 		secretKey = defaultKey;
 	}
 
-	console.log ("using key", secretKey)
-
 	const textToEncode = inputTextToArray(inputElm.value);
 	const encodedText = shuffleEncode(textToEncode);
 	outputElm.innerText = prettyPrintArray(encodedText);
@@ -268,8 +266,6 @@ document.querySelector(".button.decode").addEventListener("click", () => {
 	} else {
 		secretKey = defaultKey;
 	}
-
-	console.log ("using key", secretKey)
 
 	const textToDecode = encodedTextToArray(inputElm.value);
 	const decodedText = shuffleDecode(textToDecode);
