@@ -150,7 +150,7 @@ function inputTextToArray(inputText) {
 
 	let numLines, numChars;
 	//for (let i = 10; i >= secretKey.length; i--) {
-	for (let i = secretKey.length + 1; i < 16; i++) {
+	for (let i = secretKey.length + 1; i < 100; i++) {
 		if (retText.length % i == 0) {
 			numLines = i;
 			numChars = retText.length / i;
